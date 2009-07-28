@@ -10,8 +10,13 @@ class php::extensions::common {
           'mbstring' ]:
         mode => 'direct',
     }
-    php::package{'json':
-        mode => 'pecl',
+    case $php_centos_use_remi {
+        true: { info("php-pecl-json is included in php-common of remi") }
+        default: {
+            php::package{'json':
+                mode => 'pecl',
+            }
+        }
     }
     include php::pear::common
 }
