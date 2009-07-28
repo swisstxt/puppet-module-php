@@ -2,8 +2,12 @@
 
 class php::extensions::common {
     php::package{
-        [ 'cli', 'common', 'tidy',
-            'gd', 'mhash' ]:
+        [ 'cli', 
+          'common', 
+          'tidy', 
+          'gd', 
+          'mhash', 
+          'mbstring' ]:
         mode => 'direct',
     }
     php::package{'json':
