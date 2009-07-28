@@ -7,6 +7,7 @@ class php::extensions::common {
           'tidy', 
           'gd', 
           'mhash', 
+          'bcmath', 
           'mbstring' ]:
         mode => 'direct',
     }
