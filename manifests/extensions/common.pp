@@ -8,7 +8,8 @@ class php::extensions::common {
           'gd', 
           'mhash', 
           'bcmath', 
-          'mbstring' ]:
+          'mbstring',
+          'mcrypt', ]:
         mode => 'direct',
     }
     case $php_centos_use_remi {
