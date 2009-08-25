@@ -6,7 +6,6 @@ class php::extensions::common {
           'common', 
           'tidy', 
           'gd', 
-          'mhash', 
           'bcmath', 
           'mbstring',
           'mcrypt', ]:
