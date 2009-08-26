@@ -6,14 +6,11 @@ class php::centos inherits php::base {
         }
     }
     if $php_centos_use_testing {
-        #Package[php]{
-        #    require => Yum::Managed_yumrepo['testing'],
-        #}
-        Yum::Managed_yumrepo[testing] {
-            enabled => 1,
+        include yum::centos::testing
+        Package[php]{
+            require => Yum::Managed_yumrepo['testing'],
         }
     }
-
     file{'/etc/httpd/conf.d/php.conf':
         source => [
             "puppet://$server/files/php/apache/${operatingsystem}/${fqdn}/php.conf",
