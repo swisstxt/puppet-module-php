@@ -5,6 +5,14 @@ class php::centos inherits php::base {
             require => Yum::Managed_yumrepo['remi'],
         }
     }
+    if $php_centos_use_testing {
+        Package[php]{
+            require => Yum::Managed_yumrepo['testing'],
+        }
+        Yum::Managed_yumrepo['testing'] {
+            enabled => 1,
+        }
+    }
 
     file{'/etc/httpd/conf.d/php.conf':
         source => [
