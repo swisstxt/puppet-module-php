@@ -6,10 +6,10 @@ class php::centos inherits php::base {
         }
     }
     if $php_centos_use_testing {
-        Package[php]{
-            require => Yum::Managed_yumrepo['testing'],
-        }
-        Yum::Managed_yumrepo['testing'] {
+        #Package[php]{
+        #    require => Yum::Managed_yumrepo['testing'],
+        #}
+        Yum::Managed_yumrepo[testing] {
             enabled => 1,
         }
     }
