@@ -16,7 +16,7 @@ class php::base {
       owner => root, group => 0, mode => 0644;
     }
 
-    include php::suhosin
+    #include php::suhosin
     include php::apc
     include php::extensions::common
 }
