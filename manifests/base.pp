@@ -16,9 +16,11 @@ class php::base {
       owner => root, group => 0, mode => 0644;
     }
 
-    include php::suhosin
-    if ! $php_centos_use_testing  {
+    notice("debug: $php_centos_use_testing")
+    if ! $php_centos_use_testing {
         include php::apc
     }
+
+    include php::suhosin
     include php::extensions::common
 }

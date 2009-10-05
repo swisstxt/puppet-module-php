@@ -11,12 +11,14 @@ class php::extensions::common {
           'mcrypt', ]:
         mode => 'direct',
     }
-    if ( $php_centos_use_remi ) or ( $php_centos_use_testing ) {
+
+    if $php_centos_use_remi or $php_centos_use_testing {
       info("php-pecl-json is included in php-common")
     } else {
         php::package{'json':
             mode => 'pecl',
         }
     }
+
     include php::pear::common
 }
