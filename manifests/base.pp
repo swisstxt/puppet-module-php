@@ -10,10 +10,10 @@ class php::base {
           "puppet://$server/files/php/php.ini",
           "puppet://$server/php/config/php.ini.${architecture}",
           "puppet://$server/php/config/php.ini"
-      ],
-      require => [ Package[php], Package[apache] ],
-      notify => Service[apache],
-      owner => root, group => 0, mode => 0644;
+        ],
+        require => [ Package[php], Package[apache] ],
+        notify => Service[apache],
+        owner => root, group => 0, mode => 0644;
     }
     if ! $php_centos_use_testing {
         include php::apc
