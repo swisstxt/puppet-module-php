@@ -3,18 +3,6 @@ class php::base {
         ensure => present,
         notify => Service[apache],
     }
-    file{php_ini_config:
-        path => '/etc/php.ini',
-        source => [
-          "puppet://$server/files/php/${fqdn}/php.ini",
-          "puppet://$server/files/php/php.ini",
-          "puppet://$server/php/config/php.ini.${architecture}",
-          "puppet://$server/php/config/php.ini"
-        ],
-        require => [ Package[php], Package[apache] ],
-        notify => Service[apache],
-        owner => root, group => 0, mode => 0644;
-    }
     if ! $php_centos_use_testing {
         include php::apc
     }
