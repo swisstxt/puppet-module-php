@@ -15,12 +15,9 @@ class php::base {
       notify => Service[apache],
       owner => root, group => 0, mode => 0644;
     }
-
-    notice("debug: $php_centos_use_testing")
     if ! $php_centos_use_testing {
         include php::apc
     }
-
     include php::suhosin
     include php::extensions::common
 }
