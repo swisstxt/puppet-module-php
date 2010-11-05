@@ -1,6 +1,5 @@
-
 class php::itk {
-    case $operatingsystem {
-        centos: { include php::itk::centos }
-    }
+  case $operatingsystem {
+    centos: { include php::itk::centos }
+  }
 }
