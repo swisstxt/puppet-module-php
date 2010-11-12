@@ -1,14 +1,14 @@
 class php::base::centos inherits php::base {
-  if $php_centos_use_remi {
-    include yum::remi
+  if $php::centos_use_remi {
+    include yum::repo::remi
     Package['php']{
-      require => Yum::Managed_yumrepo['remi'],
+      require => Yum::Repo['remi'],
     }
   }
-  if $php_centos_use_testing {
-    include yum::centos::testing
+  if $php::centos_use_testing {
+    include yum::repo::dist::testing
     Package['php']{
-      require => Yum::Managed_yumrepo['testing-php'],
+      require => Yum::Repo['centos-testing'],
     }
   }
   file{'/etc/httpd/conf.d/php.conf':

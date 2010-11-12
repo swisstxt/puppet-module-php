@@ -1,7 +1,7 @@
 class php::suhosin {
   case $operatingsystem {
     centos: {
-      if $php_centos_use_remi {
+      if $php::centos_use_remi {
         include php::suhosin::package
       }
     }
@@ -10,7 +10,6 @@ class php::suhosin {
     }
   }
 }
-
 class php::suhosin::package {
   package{'php-suhosin':
     ensure => installed,

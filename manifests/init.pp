@@ -6,7 +6,6 @@
 # adapated by Puzzle ITC puzzle.ch
 # Copyright 2008, Puzzle ITC GmbH
 # Marcel Härry haerry+puppet(at)puzzle.ch
-# Simon Josi josi+puppet(at)puzzle.ch
 # Copyright 2010, Atizo AG
 # Simon Josi simon.josi+puppet(at)atizo.com
 #
@@ -16,7 +15,10 @@
 # the Free Software Foundation.
 #
 
-class php {
+class php(
+  $centos_use_testing = false,
+  $centos_use_remi = false
+) {
   case $operatingsystem {
     centos: { include php::base::centos }
     debian: { include php::base::debian }
