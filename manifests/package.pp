@@ -6,7 +6,7 @@ define php::package(
   package{"php${phpversion}-$name":
     ensure => $ensure,
     require => Package['php'],
-    notify => Service['apache'],
+    notify => Service[$php::webserver],
   }
   case $operatingsystem {
     centos,redhat,fedora: {

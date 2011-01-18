@@ -25,7 +25,7 @@ define php::pecl(
       }
       file{"/etc/php.d/$name.ini":
         content => "extension=${name}.so\n",
-        notify => Service['apache'],
+        notify => Service[$php::webserver],
         owner => root, group => 0, mode => 0644;
       }
     }

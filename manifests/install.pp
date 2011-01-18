@@ -36,7 +36,7 @@ define php::install(
   }
   exec{"php_${mode}_${name}":
     command => "${cli_str}${post_clit_str}",
-    notify => Service['apache'],
+    notify => Service[$php::webserver],
   }
   case $ensure {
     installed,present: {

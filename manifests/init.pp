@@ -17,7 +17,8 @@
 
 class php(
   $centos_use_testing = false,
-  $centos_use_remi = false
+  $centos_use_remi = false,
+  $webserver = 'apache'
 ) {
   case $operatingsystem {
     centos: { include php::base::centos }

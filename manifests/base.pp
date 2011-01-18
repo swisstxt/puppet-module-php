@@ -1,7 +1,7 @@
 class php::base {
   package{'php':
     ensure => present,
-    notify => Service['apache'],
+    notify => Service[$php::webserver],
   }
   if ! $php::centos_use_testing {
     include php::apc
