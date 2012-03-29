@@ -3,9 +3,6 @@ class php::base {
     ensure => present,
     notify => Service[$php::webserver],
   }
-  if ! $php::centos_use_testing {
-    include php::apc
-  }
   include php::suhosin
   include php::extensions::common
 }

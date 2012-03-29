@@ -5,9 +5,6 @@ class php::base::centos inherits php::base {
       includepkgs => 'php*',
     }
   }
-  if $php::centos_use_testing {
-    require yum::repo::dist::testing
-  }
   file{'/etc/httpd/conf.d/php.conf':
     source => [
       "puppet://$server/modules/site-php/apache/$operatingsystem/$fqdn/php.conf",
