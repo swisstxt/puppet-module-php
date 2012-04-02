@@ -2,11 +2,13 @@ define php::package(
   $ensure = 'installed',
   $mode = 'pear'
 ){
-  Class['php::package'] <- Class['php']
   notice($php::version)
   package{"php-$name":
     ensure => $ensure,
-    require => Package['php'],
+    require => [
+      Class['php'],
+      Package['php'],
+    ],
     notify => Service[$php::webserver],
   }
   case $operatingsystem {
