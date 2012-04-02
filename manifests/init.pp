@@ -17,6 +17,7 @@
 
 class php(
   $centos_use_remi = false,
+  $version = '',
   $webserver = 'apache'
 ) {
   case $operatingsystem {

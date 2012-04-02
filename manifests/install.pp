@@ -4,6 +4,7 @@ define php::install(
   $state = 'stable',
   $target_mode = 'absent'
 ){
+  
   include php::pear::cli
   case $operatingsystem {
     centos,redhat: {

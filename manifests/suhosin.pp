@@ -11,7 +11,9 @@ class php::suhosin {
   }
 }
 class php::suhosin::package {
+  Class['php::suhosin::package'] <- Class['php']
   package{'php-suhosin':
+    name => "php${php::version}-suhosin",
     ensure => installed,
     require => Package['php'],
   }

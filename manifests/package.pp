@@ -1,9 +1,9 @@
 define php::package(
-  $phpversion = '',
   $ensure = 'installed',
   $mode = 'pear'
 ){
-  package{"php${phpversion}-$name":
+  Class['php::package'] <- Class['php']
+  package{"php${php::version}-$name":
     ensure => $ensure,
     require => Package['php'],
     notify => Service[$php::webserver],
@@ -12,13 +12,13 @@ define php::package(
     centos,redhat,fedora: {
       case $mode {
         'direct': {
-          Package["php${phpversion}-$name"]{
-            name => "php${phpversion}-$name",
+          Package["php${php::version}-$name"]{
+            name => "php${php::version}-$name",
           }
         }
         default: {
-          Package["php${phpversion}-$name"]{
-            name => "php${phpversion}-${mode}-${name}",
+          Package["php${php::version}-$name"]{
+            name => "php${php::version}-${mode}-${name}",
           }
         }
       }

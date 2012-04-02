@@ -1,5 +1,4 @@
 define php::pecl(
-  $phpversion = '',
   $ensure = 'installed',
   $mode = 'package',
   $state = 'stable',
@@ -7,10 +6,10 @@ define php::pecl(
 ) {
   include gcc
   include php::pear::common
+  
   case $mode {
     package: {
       php::package{$name:
-        phpversion => $phpversion,
         ensure => $ensure,
         mode => 'pecl',
       }
