@@ -21,7 +21,7 @@ define php::package(
         }
         default: {
           Package["php-$name"]{
-            name => "php${php::version}-${mode}-${name}",
+            name => "php-${mode}-${name}",
           }
         }
       }
