@@ -3,7 +3,9 @@ define php::package(
   $mode = 'pear'
 ){
   Class['php::package'] <- Class['php']
-  package{"php${php::version}-$name":
+  notice($php::version)
+  package{"php-$name":
+    name => "php${php::version}-$name",
     ensure => $ensure,
     require => Package['php'],
     notify => Service[$php::webserver],

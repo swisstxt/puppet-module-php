@@ -23,7 +23,7 @@ class php(
   case $operatingsystem {
     centos: { include php::base::centos }
     debian: { include php::base::debian }
-    ubuntu: { include php::baes::ubuntu }
+    ubuntu: { include php::base::ubuntu }
     gentoo: { include php::base::gentoo}
     default: { include php::base }
   }
