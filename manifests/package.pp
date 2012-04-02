@@ -4,8 +4,7 @@ define php::package(
 ){
   Class['php::package'] <- Class['php']
   notice($php::version)
-  package{"php-$name":
-    name => "php${php::version}-$name",
+  package{'php-$name':
     ensure => $ensure,
     require => Package['php'],
     notify => Service[$php::webserver],
