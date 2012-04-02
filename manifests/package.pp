@@ -4,7 +4,7 @@ define php::package(
 ){
   Class['php::package'] <- Class['php']
   notice($php::version)
-  package{'php-$name':
+  package{"php-$name":
     ensure => $ensure,
     require => Package['php'],
     notify => Service[$php::webserver],
@@ -13,12 +13,12 @@ define php::package(
     centos,redhat,fedora: {
       case $mode {
         'direct': {
-          Package["php${php::version}-$name"]{
+          Package["php-$name"]{
             name => "php${php::version}-$name",
           }
         }
         default: {
-          Package["php${php::version}-$name"]{
+          Package["php-$name"]{
             name => "php${php::version}-${mode}-${name}",
           }
         }
