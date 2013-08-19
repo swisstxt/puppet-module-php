@@ -1,4 +1,5 @@
 class php::base::centos inherits php::base {
+  include php::suhosin
   if $php::centos_use_remi {
     class{'yum::repo::remi':
       priority => 1,

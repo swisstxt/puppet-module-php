@@ -3,25 +3,28 @@ define php::package(
   $mode = 'pear'
 ){
   notice($php::version)
-  package{"php-$name":
-    ensure => $ensure,
-    require => [
-      Class['php'],
-      Package['php'],
-    ],
-    notify => Service[$php::webserver],
-  }
+  
   case $operatingsystem {
     centos,redhat,fedora: {
       case $mode {
         'direct': {
-          Package["php-$name"]{
-            name => "php${php::version}-$name",
+          package{"php${php::version}-$name":
+            ensure => $ensure,
+            require => [
+              Class['php'],
+              Package['php'],
+            ],
+            notify => Class[$php::webserver],
           }
         }
         default: {
-          Package["php-$name"]{
-            name => "php-${mode}-${name}",
+          package{"php-${mode}-${name}":
+            ensure => $ensure,
+            require => [
+              Class['php'],
+              Package['php'],
+            ],
+            notify => Class[$php::webserver],
           }
         }
       }

@@ -3,8 +3,7 @@ class php::base {
   package{'php':
     name => "php${php::version}",
     ensure => present,
-    notify => Service[$php::webserver],
+    notify => Class[$php::webserver],
   }
-  include php::suhosin
   include php::extensions::common
 }
